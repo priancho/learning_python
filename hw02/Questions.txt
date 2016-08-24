@@ -3,7 +3,7 @@ A本屋から書籍の管理を自動化するための書籍管理ソフトの�
 そしてテストプログラム(test.bookinventory.py)を作って正しく動作するかを確認したが、幾つかの問題が発覚した。
 
 問1: テストプログラムの"Test 2"部分が動作するように、書籍の価格(price)を変更する下記の関数をBookクラスへ追加してください。
-set_price(self, price)
+    set_price(self, price)
 
 問2: テストプログラムの"Test 3"部分が動作するように、書籍が売れた時に在庫から削除できるようにBookInventoryクラスへ下記の関数を追加してください。
     remove(self, name)
