@@ -1,0 +1,99 @@
+今回はコンピュータプログラミングの開発手法の一つであるテスト駆動開発
+(Test-Driven Development, TDD)を紹介します。
+
+前回のBookInventoryのケースでも確認できたのですが、ある問題を解決する
+ために必要な機能を実装する場合、開発者がもともと考えていたものと実装
+されたコードの結果に差が生じる場合があります。
+原因は団純なバグやロジックに欠陥など色々ありますが、できるだけ早い段階
+で発見することが重要です。
+TDDという手法は必要な機能を実装する前に、特定の入力に対して決められた
+結果が生成されることを定義し、それを満たすようにコードを書くような方法
+です。
+下記のURLの特集記事によく説明されてますので一回読んでいただければ
+どのような内容なのか分かりやすいと思います。
+    http://www.atmarkit.co.jp/fdotnet/special/tdd/tdd_01.html
+
+単にテストと言っても実は、一番小さい単位の機能をテストするUnit-testから
+全部分を合わせて入力から最終結果までチェックするSystem testなど、様々
+な種類があります。
+下記のURLにテストの種類がよく纏められてます。
+    http://qiita.com/ktarow/items/8c3d94d6c21a0c86b799
+
+
+3回目のPython勉強会では、一番基礎的なUnit-testに関して話してみようと
+思います。
+Unit-test(単体テスト)でのUnitはソースコードで個別にテスト可能な最小
+の部分を意味し、一般的にはクラスのインタフェース関数が対象になること
+が多いです。
+
+理解しやすいように前回に作成していただいたbook.pyとbookinventory.pyを
+利用してみます。
+このQuestions.txtファイルがあるディレクトリには下記のような二つの
+ディレクトリーがあります。
+    +--bookinventory
+    +  +--__init__.py
+    +--test
+       +--__init__.py
+       +--test_inventory.py
+
+bookinventory/ディレクトリーの下に、以前作って頂いたbook.pyとbookinventory.py
+をコピーしてください。
+その後、下記の命令を実行することで、test_inventory.pyの内部のテストが機動して
+結果が出るはずです。
+    $ python -m unittest -v test.test_inventory
+
+    testAddBookIntoInventory (test.test_inventory.TestInventory) ... ok
+    testFindAndFindBSearchResults (test.test_inventory.TestInventory) ... FAIL
+    testFindBookThatDoesNotExistInTheInventory (test.test_inventory.TestInventory) ... FAIL
+    testFindBookThatExistsInTheInventory (test.test_inventory.TestInventory) ... FAIL
+    testRemoveBookFromInventory (test.test_inventory.TestInventory) ... FAIL
+    testRemoveBookFromInventoryWithDuplicateBooks (test.test_inventory.TestInventory) ... FAIL
+
+    ======================================================================
+    FAIL: testFindAndFindBSearchResults (test.test_inventory.TestInventory)
+    ----------------------------------------------------------------------
+    Traceback (most recent call last):
+      File "test/test_inventory.py", line 122, in testFindAndFindBSearchResults
+          self.assertTrue(False)
+          AssertionError: False is not true
+    AssertionError: False is not true
+
+    ======================================================================
+    FAIL: testFindBookThatDoesNotExistInTheInventory (test.test_inventory.TestInventory)
+    ...
+
+python -m unittestのようにunittestモジュールを利用してPython標準のユニットテストを
+実行することが可能です。
+この場合、test/test_inventory.py内部に定義されたクラスの中でunittest.TestCaseを相続
+したものがテスト用として判断されます。
+そのクラスの中にtest...の名前で始まるの関数は自動的にテスト関数としてみなされます。
+
+test/test_inventory.pyのファイルの中身を見ていただくと、testAddBookIntoInventory()
+は実装されていて、他の五つのテストはまだ実装されてません。
+今回の勉強会ではこれら五つのテスト関数を実装していただくことをお願いしたいと思います。
+Python 標準unittestモジュールに関して調べたいときは下記の公式ドキュメントが有用
+なのでご参考にしてください。
+    http://docs.python.jp/2/library/unittest.html
+
+
+各関数の中にどのような目的のテストなのかをコメントしておきましたのでそれを参考に
+していただき、もしよく理解ができない部分がありましたらSlackやメールなどで気軽く
+お声かけてください。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
