@@ -128,7 +128,7 @@ class TestInventory(unittest.TestCase):
         を削除し、正しく削除されたのかをチェックするテストを行う。
         ただし、在庫目録には与えられた名前の書籍が複数存在する。
         """
-        indices = [0000, 0001, 0002, 0002, 0002, 0003]
+        indices = [0, 1, 2, 2, 2, 3]
         for idx in indices:
             onebook = book.Book(
                 "mybook{:04}".format(idx),
