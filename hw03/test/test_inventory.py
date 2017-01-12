@@ -124,7 +124,7 @@ class TestInventory(unittest.TestCase):
 
     def testRemoveBookFromInventoryWithDuplicateBooks(self):
         """
-        在庫目録(self.inven)からタイトルが「mybook1234」の書籍
+        在庫目録(self.inven)からタイトルが「mybook1002」の書籍
         を削除し、正しく削除されたのかをチェックするテストを行う。
         ただし、在庫目録には与えられた名前の書籍が複数存在する。
         """
